@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>課題作成計画表</title>
+  <link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body>
+  <header>
+    <p>今週の課題は・・・<input type="text" id="kadai"></p>
+    <p>なので</p>
+    <input type="text" id="sakuhin">
+    <p>を作ります！</p>
+  </header>
+
+  <main>
+    <p>♦計画を立てよう♦</p>
+    <table>
+      <tr>
+        <th id="week"></th>
+        <td id="weektext"></td>
+      </tr>
+    </table>
+
+    <ul>
+      <li id="save">Save</li>
+      <li id="clear">Clear</li>
+    </ul>
+  </main>
+
+  <footer>
+    <small>G's</small>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+    //曜日
+    const list01 = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU'];
+    const array = [];
+    for (let i = 0; i < list01.length; i++) {
+      array.push(`<p>${list01[i]}</p>`);
+    }
+    $("#week").html(array);
+
+
+    //テキストエリア 
+
+    const box =[];
+
+    for (let i = 0; i < list01.length; i++){
+      box.push(`<textarea></textarea>`)
+    }
+    $("#weektext").html(box + `<input id="weekinput" type="text" value="">`);
+
+    //テキストエリアの値を取得
+
+    let x = document.getElementById('weekinput');
+    console.log(x.value);
+
+    
+    
+
+    //保存
+    $("#save").on("click", function () {
+      const data = {
+      title1: $("#kadai").val(),
+      title2: $("#sakuhin").val(),
+      text: $("#weektext").val(),
+    };
+    console.log(data);
+    const jsonData = JSON.stringify(data);
+    console.log(jsonData);
+    localStorage.setItem("memo",jsonData);
+    });
+
+    //削除
+    $("#clear").on("click", function () {
+      localStorage.removeItem("memo");
+      $("#kadai").val("");
+      $("#sakuhin").val("");
+      $("#weektext").val("");
+    })
+
+    //取得
+    if (localStorage.getItem("memo")) {
+      const jsonData = localStorage.getItem("memo");
+      console.log(jsonData);
+      const data = JSON.parse(jsonData);
+      console.log(data);
+      $("#kadai").val(data.title1);
+      $("#sakuhin").val(data.title2);
+      $("#weektext").val(data.text);
+    }
+
+  </script>
+
+</body>
+
+</html>

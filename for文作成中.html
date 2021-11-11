@@ -22,14 +22,7 @@
     <table  id="table">
       <tr>
         <th id="week"></th>
-        <div>
-          <td><textarea name="" id="text1" cols="2" rows="6"></textarea></td>
-          <td><textarea name="" id="text2" cols="2" rows="6"></textarea></td>
-          <td><textarea name="" id="text3" cols="2" rows="6"></textarea></td>
-          <td><textarea name="" id="text4" cols="2" rows="6"></textarea></td>
-          <td><textarea name="" id="text5" cols="2" rows="6"></textarea></td>
-          <td><textarea name="" id="text6" cols="2" rows="6"></textarea></td>
-        </div>
+        <td id="weektext"></td>
       </tr>
     </table>
 
@@ -54,18 +47,28 @@
     $("#week").html(array);
 
 
+    //テキストエリア 
+
+    const box =[];
+
+    for (let i = 0; i < list01.length; i++){
+      box.push(`<textarea></textarea>`)
+    }
+    $("#weektext").html(box);
+
 
     //保存
+    const box2=[];
+    for (let i = 0; i < list01.length; i++){
+      box.push()
+    }
+
+
     $("#save").on("click", function () {
       const data = {
       title1: $("#kadai").val(),
       title2: $("#sakuhin").val(),
-      text1: $("#text1").val(),
-      text2: $("#text2").val(),
-      text3: $("#text3").val(),
-      text4: $("#text4").val(),
-      text5: $("#text5").val(),
-      text6: $("#text6").val(),
+      text: $("box2").val(),
     };
     console.log(data);
     const jsonData = JSON.stringify(data);
@@ -78,12 +81,7 @@
       localStorage.removeItem("memo");
       $("#kadai").val("");
       $("#sakuhin").val("");
-      $("#text1").val("");
-      $("#text2").val("");
-      $("#text3").val("");
-      $("#text4").val("");
-      $("#text5").val("");
-      $("#text6").val("");
+      $("box2").val("");
     })
 
     //取得
@@ -94,12 +92,7 @@
       console.log(data);
       $("#kadai").val(data.title1);
       $("#sakuhin").val(data.title2);
-      $("#text1").val(data.text1);
-      $("#text2").val(data.text2);
-      $("#text3").val(data.text3);
-      $("#text4").val(data.text4);
-      $("#text5").val(data.text5);
-      $("#text6").val(data.text6);
+      $("box2").val(data.text);
     }
 
   </script>

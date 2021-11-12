@@ -1,46 +1,77 @@
 body{
     margin:0;
-    padding:0;
+    padding:50px;
     text-align:left;
-    font-size: 32px;
+    font-size: 16px;
+    width: 960px;
 }
 header{
+    width: 100%;
     background-color: #fff;
     border-bottom: 1px solid #ccc;
     text-align: center;
+}
+#kadai,#sakuhin{
+    text-align: center;
+    font-size: 16px;
 }
 main{
     border-bottom:1px solid #ccc;
     position:relative;
 }
+.keikaku{
+    text-align: center;
+    font-size: 16px;
+}
+.top{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+}
+.topleft{
+    width: 20%;
+    display: table;    
+}
+#week{
+    display: table-cell;
+    vertical-align: middle;
+
+}
+.topright{
+    width: 80%;
+}
+
+
 footer{
     background-color: #fff;
     border-bottom:1px solid #ccc;
     text-align: center;
 }
-p{
-    font-size:200%;
-    text-align: center;
-    border-bottom:1px solid #fff;
-    height:200px;
-}
-ul{
+
+.under{
     padding: 0;
     border-top: 1px solid #000000;
     display:table;  /* 定義 */
     table-layout: fixed;
     width:100%;
 }
-li{
+#save,#clear{
     list-style-type:none;
     border: 1px solid #666;
     background-color: #FFF;
     display:table-cell;  /* 定義 */
     cursor: pointer;
 }
-li:hover{
-    background: #0066CC;
-    color:#fff;
+#save:hover{
+    background-color: pink;
+    color:white;
+}
+#clear:hover{
+    background-color: pink;
+    color:white;
 }
 input,textarea{
     margin: 3%;
